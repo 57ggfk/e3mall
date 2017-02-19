@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.e3mall.manager.mapper.ext.TbItemExtMapper" >
+ <select id="queryItemAll" resultType="tbItemExt">
+
+     SELECT
+      item.`id`,
+      item.`title`,
+      item.`sell_point`,
+      item.`price`,
+      item.`image`,
+      item.`description`,
+      cat.`name` catName
+    FROM
+      tb_item item
+      LEFT JOIN tb_item_cat cat
+        ON item.`cid` = cat.`id`
+
+ </select>
+
+    <select id="queryItemById" resultType="tbItemExt" parameterType="long">
+        SELECT
+        item.`id`,
+        item.`title`,
+        item.`sell_point`,
+        item.`price`,
+        item.`image`,
+        item.`description`,
+        cat.`name` catName
+        FROM
+        tb_item item
+        LEFT JOIN tb_item_cat cat
+        ON item.`cid` = cat.`id`
+        WHERE item.id = #{id}
+    </select>
+
+</mapper>

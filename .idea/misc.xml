@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/e3-cart-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-cart/e3-cart-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-cms/e3-cms-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-item-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-manager/e3-manager-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-order-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-order/e3-order-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-search-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-search/e3-search-elastic" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-search/e3-search-servcie" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-sso-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-sso/e3-sso-service" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/e3-common/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-manager-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-parent/e3-portal-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cms/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-portal-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-search/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-search-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-item-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-sso/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-sso-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-order/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-parent/e3-order-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-order-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart/e3-cart-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart/e3-cart-service/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart-web/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Gradle</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>OSGi</id>
+          </State>
+          <State>
+            <id>Probable bugsGradle</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.7x86" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

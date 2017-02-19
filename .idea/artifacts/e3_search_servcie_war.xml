@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="e3-search-servcie:war">
+    <output-path>$PROJECT_DIR$/e3-search/e3-search-servcie/target</output-path>
+    <root id="archive" name="e3-search-service.war">
+      <element id="artifact" artifact-name="e3-search-servcie:war exploded" />
+    </root>
+  </artifact>
+</component>

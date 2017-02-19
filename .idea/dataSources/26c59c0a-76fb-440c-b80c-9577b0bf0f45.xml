@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - e3mall@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="e3mall">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="crm"/>
+    <schema id="3" name="crmtest"/>
+    <schema id="4" name="examtest"/>
+    <schema id="5" name="heimashop"/>
+    <schema id="6" name="heimastore"/>
+    <schema id="7" name="information_schema"/>
+    <schema id="8" name="lucene"/>
+    <schema id="9" name="mybatis"/>
+    <schema id="10" name="myblog"/>
+    <schema id="11" name="mysql"/>
+    <schema id="12" name="performance_schema"/>
+    <schema id="13" name="sakila"/>
+    <schema id="14" name="sshtext"/>
+    <schema id="15" name="sys"/>
+    <schema id="16" name="taotao"/>
+    <schema id="17" name="test"/>
+    <schema id="18" name="wordpress"/>
+    <schema id="19" name="world"/>
+    <table id="20" parent="1" name="tb_content"/>
+    <table id="21" parent="1" name="tb_content_category">
+      <comment>内容分类</comment>
+    </table>
+    <table id="22" parent="1" name="tb_item">
+      <comment>商品表</comment>
+    </table>
+    <table id="23" parent="1" name="tb_item_cat">
+      <comment>商品类目</comment>
+    </table>
+    <table id="24" parent="1" name="tb_item_param">
+      <comment>商品规则参数</comment>
+    </table>
+    <table id="25" parent="1" name="tb_item_param_item">
+      <comment>商品规格和商品的关系表</comment>
+    </table>
+    <table id="26" parent="1" name="tb_order"/>
+    <table id="27" parent="1" name="tb_order_item"/>
+    <table id="28" parent="1" name="tb_order_shipping"/>
+    <table id="29" parent="1" name="tb_user">
+      <comment>用户表</comment>
+    </table>
+    <column id="30" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="31" parent="20" name="category_id">
+      <comment>内容类目ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="32" parent="20" name="title">
+      <comment>内容标题</comment>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="33" parent="20" name="sub_title">
+      <comment>子标题</comment>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="34" parent="20" name="title_desc">
+      <comment>标题描述</comment>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="35" parent="20" name="url">
+      <comment>链接</comment>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="36" parent="20" name="pic">
+      <comment>图片绝对路径</comment>
+      <data-type>varchar(300)|0</data-type>
+    </column>
+    <column id="37" parent="20" name="pic2">
+      <comment>图片2</comment>
+      <data-type>varchar(300)|0</data-type>
+    </column>
+    <column id="38" parent="20" name="content">
+      <comment>内容</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="39" parent="20" name="created">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="40" parent="20" name="updated">
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="41" parent="20" name="category_id">
+      <columns>category_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="42" parent="20" name="updated">
+      <columns>updated</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="43" parent="20" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="44" parent="21" name="id">
+      <comment>类目ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="45" parent="21" name="parent_id">
+      <comment>父类目ID=0时，代表的是一级的类目</comment>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="46" parent="21" name="name">
+      <comment>分类名称</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="47" parent="21" name="status">
+      <comment>状态。可选值:1(正常),2(删除)</comment>
+      <data-type>int(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="48" parent="21" name="sort_order">
+      <comment>排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数</comment>
+      <data-type>int(4)|0</data-type>
+    </column>
+    <column id="49" parent="21" name="is_parent">
+      <comment>该类目是否为父类目，1为true，0为false</comment>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="50" parent="21" name="created">
+      <comment>创建时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="51" parent="21" name="updated">
+      <comment>创建时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="52" parent="21" name="parent_id">
+      <columns>parent_id
+status</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="53" parent="21" name="sort_order">
+      <columns>sort_order</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="54" parent="21" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="55" parent="22" name="id">
+      <comment>商品id，同时也是商品编号</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="56" parent="22" name="title">
+      <comment>商品标题</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="57" parent="22" name="sell_point">
+      <comment>商品卖点</comment>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="58" parent="22" name="description">
+      <comment>商品描述</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="59" parent="22" name="price">
+      <comment>商品价格，单位为：分</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="60" parent="22" name="num">
+      <comment>库存数量</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="61" parent="22" name="barcode">
+      <comment>商品条形码</comment>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="62" parent="22" name="image">
+      <comment>商品图片</comment>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="63" parent="22" name="cid">
+      <comment>所属类目，叶子类目</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(10)|0</data-type>
+    </column>
+    <column id="64" parent="22" name="status">
+      <comment>商品状态，1-正常，2-下架，3-删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="65" parent="22" name="created">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="66" parent="22" name="updated">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="67" parent="22" name="cid">
+      <columns>cid</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="68" parent="22" name="status">
+      <columns>status</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="69" parent="22" name="updated">
+      <columns>updated</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="70" parent="22" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="71" parent="23" name="id">
+      <comment>类目ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="72" parent="23" name="parent_id">
+      <comment>父类目ID=0时，代表的是一级的类目</comment>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="73" parent="23" name="name">
+      <comment>类目名称</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="74" parent="23" name="status">
+      <comment>状态。可选值:1(正常),2(删除)</comment>
+      <data-type>int(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="75" parent="23" name="sort_order">
+      <comment>排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数</comment>
+      <data-type>int(4)|0</data-type>
+    </column>
+    <column id="76" parent="23" name="is_parent">
+      <comment>该类目是否为父类目，1为true，0为false</comment>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="77" parent="23" name="created">
+      <comment>创建时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="78" parent="23" name="updated">
+      <comment>创建时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="79" parent="23" name="parent_id">
+      <columns>parent_id
+status</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="80" parent="23" name="sort_order">
+      <columns>sort_order</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="81" parent="23" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="82" parent="24" name="id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="83" parent="24" name="item_cat_id">
+      <comment>商品类目ID</comment>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="84" parent="24" name="param_data">
+      <comment>参数数据，格式为json格式</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="85" parent="24" name="created">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="86" parent="24" name="updated">
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="87" parent="24" name="item_cat_id">
+      <columns>item_cat_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="88" parent="24" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="89" parent="25" name="id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="90" parent="25" name="item_id">
+      <comment>商品ID</comment>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="91" parent="25" name="param_data">
+      <comment>参数数据，格式为json格式</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="92" parent="25" name="created">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="93" parent="25" name="updated">
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="94" parent="25" name="item_id">
+      <columns>item_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="95" parent="25" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="96" parent="26" name="order_id">
+      <comment>订单id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="97" parent="26" name="payment">
+      <comment>实付金额。精确到2位小数;单位:元。如:200.07，表示:200元7分</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="98" parent="26" name="payment_type">
+      <comment>支付类型，1、在线支付，2、货到付款</comment>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="99" parent="26" name="post_fee">
+      <comment>邮费。精确到2位小数;单位:元。如:200.07，表示:200元7分</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="100" parent="26" name="status">
+      <comment>状态：1、未付款，2、已付款，3、未发货，4、已发货，5、交易成功，6、交易关闭</comment>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="101" parent="26" name="create_time">
+      <comment>订单创建时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="102" parent="26" name="update_time">
+      <comment>订单更新时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="103" parent="26" name="payment_time">
+      <comment>付款时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="104" parent="26" name="consign_time">
+      <comment>发货时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="105" parent="26" name="end_time">
+      <comment>交易完成时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="106" parent="26" name="close_time">
+      <comment>交易关闭时间</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="107" parent="26" name="shipping_name">
+      <comment>物流名称</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="108" parent="26" name="shipping_code">
+      <comment>物流单号</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="109" parent="26" name="user_id">
+      <comment>用户id</comment>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="110" parent="26" name="buyer_message">
+      <comment>买家留言</comment>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="111" parent="26" name="buyer_nick">
+      <comment>买家昵称</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="112" parent="26" name="buyer_rate">
+      <comment>买家是否已经评价</comment>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <index id="113" parent="26" name="buyer_nick">
+      <columns>buyer_nick</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="114" parent="26" name="create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="115" parent="26" name="payment_type">
+      <columns>payment_type</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="116" parent="26" name="status">
+      <columns>status</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="117" parent="26" name="PRIMARY">
+      <columns>order_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="118" parent="27" name="id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="119" parent="27" name="item_id">
+      <comment>商品id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="120" parent="27" name="order_id">
+      <comment>订单id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="121" parent="27" name="num">
+      <comment>商品购买数量</comment>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="122" parent="27" name="title">
+      <comment>商品标题</comment>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="123" parent="27" name="price">
+      <comment>商品单价</comment>
+      <data-type>bigint(50)|0</data-type>
+    </column>
+    <column id="124" parent="27" name="total_fee">
+      <comment>商品总金额</comment>
+      <data-type>bigint(50)|0</data-type>
+    </column>
+    <column id="125" parent="27" name="pic_path">
+      <comment>商品图片地址</comment>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <index id="126" parent="27" name="item_id">
+      <columns>item_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="127" parent="27" name="order_id">
+      <columns>order_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="128" parent="27" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="129" parent="28" name="order_id">
+      <comment>订单ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="130" parent="28" name="receiver_name">
+      <comment>收货人全名</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="131" parent="28" name="receiver_phone">
+      <comment>固定电话</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="132" parent="28" name="receiver_mobile">
+      <comment>移动电话</comment>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="133" parent="28" name="receiver_state">
+      <comment>省份</comment>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="134" parent="28" name="receiver_city">
+      <comment>城市</comment>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="135" parent="28" name="receiver_district">
+      <comment>区/县</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="136" parent="28" name="receiver_address">
+      <comment>收货地址，如：xx路xx号</comment>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="137" parent="28" name="receiver_zip">
+      <comment>邮政编码,如：310001</comment>
+      <data-type>varchar(6)|0</data-type>
+    </column>
+    <column id="138" parent="28" name="created">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="139" parent="28" name="updated">
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="140" parent="28" name="PRIMARY">
+      <columns>order_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="141" parent="29" name="id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="142" parent="29" name="username">
+      <comment>用户名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="143" parent="29" name="password">
+      <comment>密码，加密存储</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(32)|0</data-type>
+    </column>
+    <column id="144" parent="29" name="phone">
+      <comment>注册手机号</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="145" parent="29" name="email">
+      <comment>注册邮箱</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="146" parent="29" name="created">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="147" parent="29" name="updated">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="148" parent="29" name="email">
+      <columns>email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="149" parent="29" name="phone">
+      <columns>phone</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="150" parent="29" name="username">
+      <columns>username</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="151" parent="29" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="152" parent="29" name="username">
+      <columns>username</columns>
+      <underlying-index>username</underlying-index>
+    </key>
+    <key id="153" parent="29" name="phone">
+      <columns>phone</columns>
+      <underlying-index>phone</underlying-index>
+    </key>
+    <key id="154" parent="29" name="email">
+      <columns>email</columns>
+      <underlying-index>email</underlying-index>
+    </key>
+  </database-model>
+</dataSource>
