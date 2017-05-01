@@ -99,17 +99,19 @@ public class CartController {
 
         //从cookie中取出购物车集合
         List<TbItemExt> cartList = getCartListFromCookie(request);
-
+        if (cartList == null) {
+            cartList = new ArrayList<TbItemExt>();
+        }
         //如果购物车中有商品，数量追加
         boolean flag = false; //标志位，是否有商品
-        for (TbItemExt item : cartList) {
-            //引用类型使用equals判断
-            if (itemId.equals(item.getId())) {
-                item.setNum(item.getNum() + num);
-                flag = true;
-                break;
+            for (TbItemExt item : cartList) {
+                //引用类型使用equals判断
+                if (itemId.equals(item.getId())) {
+                    item.setNum(item.getNum() + num);
+                    flag = true;
+                    break;
+                }
             }
-        }
 
         //如果购物车中没有，查询数据库，将查询结果添加到购物车中，并设置商品数量num
         if (!flag) {

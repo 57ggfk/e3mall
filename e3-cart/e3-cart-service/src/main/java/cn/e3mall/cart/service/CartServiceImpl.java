@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.JedisCluster;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created by wangji on 2017/2/8.
  */
+@Service
 public class CartServiceImpl implements CartService {
 
     @Value("${REDIS_CART_KEY_PRE:cart:}")

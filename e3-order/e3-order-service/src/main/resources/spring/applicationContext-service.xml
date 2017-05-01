@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
     <!-- 包扫描器，扫描带@Service注解的类 -->
-    <context:component-scan base-package="cn.e3mall.cart.service"></context:component-scan>
+    <context:component-scan base-package="cn.e3mall.order.service"></context:component-scan>
 
     <!-- 事务管理器 -->
     <bean id="transactionManager"
