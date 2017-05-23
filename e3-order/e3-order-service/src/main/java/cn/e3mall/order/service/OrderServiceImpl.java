@@ -70,7 +70,8 @@ public class OrderServiceImpl implements OrderService {
         // 添加订单配送表
         orderInfo.getOrderShipping().setOrderId(orderId);
         orderShippingMapper.insert(orderInfo.getOrderShipping());
-
-        return null;
+        E3Result result = new E3Result();
+        result.setData(orderId);
+        return result;
     }
 }

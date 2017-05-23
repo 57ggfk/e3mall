@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.JedisCluster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +56,9 @@ public class CartServiceImpl implements CartService {
     public E3Result addCart(Long userId, Long itemId, Integer num) {
         //获取购物车中的商品集合
         List<TbItemExt> cartList = getCartListFromRedis(userId);
+        if (cartList==null) {
+            cartList = new ArrayList<TbItemExt>();
+        }
         //是否包含此商品的标志位
         boolean flag = false;
 
@@ -75,7 +79,10 @@ public class CartServiceImpl implements CartService {
             BeanUtils.copyProperties(tbItem,itemExt);
             //不需要显示在购物车的商品属性设置为null
             itemExt.setDescription(null);
-
+            //设置商品数量
+            itemExt.setNum(num);
+            //添加到cartList
+            cartList.add(itemExt);
         }
 
         //把修改后的购物车集合存入Redis
@@ -114,6 +121,7 @@ public class CartServiceImpl implements CartService {
 
             if (tbItemExt.getId().equals(itemId)) {
                 itemList.remove(tbItemExt);
+                break;//删除之后结束循环，避免并发修改异常
             }
 
         }

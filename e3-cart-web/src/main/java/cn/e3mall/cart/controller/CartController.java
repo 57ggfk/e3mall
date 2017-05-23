@@ -72,7 +72,7 @@ public class CartController {
      */
     private List<TbItemExt> getCartListFromCookie(HttpServletRequest request) {
         //从Cookie中取出购物车
-        String cookieValue = CookieUtils.getCookieValue(request, COOKIE_CART_NAME);
+        String cookieValue = CookieUtils.getCookieValue(request, COOKIE_CART_NAME, true);
 
         //获取cookie中的集合
         List<TbItemExt> list = new ArrayList<TbItemExt>();

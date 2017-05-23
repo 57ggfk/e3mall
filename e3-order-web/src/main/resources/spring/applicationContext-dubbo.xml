@@ -14,12 +14,17 @@
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="192.168.116.138:2181"/>
 
-	<!-- 单点登录 -->
+	<!-- 购物车 -->
 	<dubbo:reference interface="cn.e3mall.cart.service.CartService"
 					id="cartService" />
+	<!-- 商品 -->
 	<dubbo:reference interface="cn.e3mall.manager.service.ItemService"
 					id="itemService" />
+	<!-- 单点登录 -->
 	<dubbo:reference interface="cn.e3mall.sso.service.SsoService"
 					 id="ssoService" />
+	<!-- 订单 -->
+	<dubbo:reference interface="cn.e3mall.order.service.OrderService"
+					 id="orderService" />
 
 </beans>

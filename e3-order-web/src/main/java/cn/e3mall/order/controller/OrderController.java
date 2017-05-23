@@ -32,6 +32,7 @@ public class OrderController {
 
     @RequestMapping("/order-cart")
     public String showOrderCart(HttpServletRequest request) {
+        // 获取用户信息
         TbUser user = (TbUser) request.getAttribute(REQUEST_USER_NAME);
         List<TbItemExt> cartList = cartService.getCartListFromRedis(user.getId());
         request.setAttribute("cartList",cartList);
@@ -57,6 +58,6 @@ public class OrderController {
 
         request.setAttribute("date",dateTime.toString("yyyy-MM-dd"));
 
-        return "order-create";
+        return "success";
     }
 }

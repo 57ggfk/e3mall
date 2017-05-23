@@ -21,7 +21,7 @@ import java.util.List;
  * Created by wangji on 2017/2/8.
  */
 public class LoginInterceptor implements HandlerInterceptor {
-    @Value("${E3_TOKEN:E3_TOKEN")
+    @Value("${E3_TOKEN:E3_TOKEN}")
     private String E3_TOKEN;
     @Value("${REQUEST_USER_NAME:user}")
     private String REQUEST_USER_NAME;
@@ -58,7 +58,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (StringUtils.isNotEmpty(cookieValue)) {
             List<TbItemExt> itemList = JsonUtils.jsonToList(cookieValue, TbItemExt.class);
             //合并购物车
-            cartService.mergeCart(user.getId(), itemList);
+            if (itemList!=null && itemList.size()>0) {
+                cartService.mergeCart(user.getId(), itemList);
+            }
             //合并购物车成功之后，清空cookie中的购物车
             CookieUtils.deleteCookie(request,response,COOKIE_CART_NAME);
         }

@@ -53,7 +53,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         // 登录，用户写入request域中，
         request.setAttribute(REQUEST_USER_NAME,result.getData());
-        return false;
+        return true;
     }
 
     @Override
